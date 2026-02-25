@@ -58,7 +58,7 @@ export default function ServicesSection() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5 }}
                 className={`group relative overflow-hidden rounded-xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
                   isHighlighted
                     ? "border-secondary/30 bg-gradient-to-br from-secondary/5 to-transparent"
