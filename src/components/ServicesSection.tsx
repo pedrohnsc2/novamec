@@ -10,7 +10,6 @@ import {
   Droplets,
   Cog,
   Zap,
-  Wind,
   Target,
   Circle,
 } from "lucide-react";
@@ -28,7 +27,6 @@ const iconMap: Record<string, LucideIcon> = {
   Droplets,
   Cog,
   Zap,
-  Wind,
   Target,
   Circle,
 };

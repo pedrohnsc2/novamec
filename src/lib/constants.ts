@@ -103,14 +103,7 @@ export const SERVICES = [
       "Alternador, motor de partida, bateria, faróis e todo o sistema elétrico do seu veículo.",
     icon: "Zap",
   },
-  {
-    id: "ar-condicionado",
-    title: "Ar Condicionado Automotivo",
-    description:
-      "Recarga, manutenção do compressor e reparo completo do sistema de A/C.",
-    icon: "Wind",
-  },
-  {
+{
     id: "alinhamento",
     title: "Alinhamento",
     description:
