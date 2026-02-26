@@ -1,4 +1,8 @@
-export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const _GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+export const GA_MEASUREMENT_ID =
+  _GA_MEASUREMENT_ID && /^G-[A-Z0-9]+$/.test(_GA_MEASUREMENT_ID)
+    ? _GA_MEASUREMENT_ID
+    : undefined;
 
 type GtagEvent = {
   action: string;

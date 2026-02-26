@@ -2,14 +2,27 @@ import { describe, it, expect } from "vitest";
 import { checkRateLimit } from "@/lib/rate-limit";
 
 describe("checkRateLimit", () => {
-  it("allows requests when Redis is not configured (dev fallback)", async () => {
-    const result = await checkRateLimit("127.0.0.1");
+  it("allows requests when Redis is not configured (in-memory fallback)", async () => {
+    const result = await checkRateLimit("10.10.10.1");
     expect(result.allowed).toBe(true);
-    expect(result.remaining).toBeGreaterThan(0);
+    expect(result.remaining).toBeGreaterThanOrEqual(0);
   });
 
-  it("returns positive remaining count in dev mode", async () => {
-    const result = await checkRateLimit("192.168.1.1");
-    expect(result.remaining).toBe(5);
+  it("returns correct remaining count after first request", async () => {
+    const result = await checkRateLimit("10.10.10.2");
+    expect(result.remaining).toBe(4);
+  });
+
+  it("blocks after exceeding max requests", async () => {
+    const ip = "10.10.10.3";
+
+    for (let i = 0; i < 5; i++) {
+      const r = await checkRateLimit(ip);
+      expect(r.allowed).toBe(true);
+    }
+
+    const blocked = await checkRateLimit(ip);
+    expect(blocked.allowed).toBe(false);
+    expect(blocked.remaining).toBe(0);
   });
 });

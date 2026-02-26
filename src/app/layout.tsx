@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
+import { headers } from "next/headers";
 
 const dmSans = DM_Sans({
   variable: "--font-sans",
@@ -21,6 +22,7 @@ const montserrat = Montserrat({
 });
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const isValidGaId = GA_MEASUREMENT_ID && /^G-[A-Z0-9]+$/.test(GA_MEASUREMENT_ID);
 
 export const metadata: Metadata = {
   metadataBase: new URL(BUSINESS.url),
@@ -117,11 +119,14 @@ const jsonLd = {
   sameAs: [BUSINESS.social.instagram],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = await headers();
+  const nonce = headersList.get("x-csp-nonce") ?? "";
+
   return (
     <html lang="pt-BR" id="top">
       <head>
@@ -129,13 +134,14 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {GA_MEASUREMENT_ID && (
+        {isValidGaId && (
           <>
             <Script
+              nonce={nonce}
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
               strategy="afterInteractive"
             />
-            <Script id="gtag-init" strategy="afterInteractive">
+            <Script nonce={nonce} id="gtag-init" strategy="afterInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
