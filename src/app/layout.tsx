@@ -68,6 +68,10 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  icons: {
+    icon: "/images/logo-novamec.png",
+    apple: "/images/logo-novamec.png",
+  },
   alternates: {
     canonical: BUSINESS.url,
   },
@@ -123,7 +127,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" id="top">
       <head>
         <script
           type="application/ld+json"

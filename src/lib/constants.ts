@@ -157,33 +157,39 @@ export const TEAM = [
 
 export const TESTIMONIALS = [
   {
-    name: "Cliente Google",
-    rating: 5,
-    text: "Profissional de altíssima qualidade, atendimento excelente, oficina super organizada, tratamento com os clientes de qualidade. Recomendo a todos.",
-    service: "Mecânica Geral",
-  },
-  {
-    name: "Cliente Google",
+    name: "Damarys Silva",
     rating: 5,
     text: "Vinícius é um excelente profissional, super honesto de confiança e explica tudo direitinho. Pra quem é mulher e tem receios, pode ir sem medo, o trabalho é impecável, valores justos. Meu carro ficou perfeito, recomendo super!",
     service: "Revisão Completa",
   },
   {
-    name: "Cliente Google",
+    name: "Raquel America",
     rating: 5,
     text: "Fui pelos comentários positivos que vi aqui, não conhecia o local. Atendimento bom e o serviço bem executado, o Vinícius é muito claro sobre os problemas sem enrolação, passa confiança. O carro está ótimo. Recomendo.",
     service: "Diagnóstico",
   },
   {
-    name: "Cliente Google",
+    name: "Marcus Felix",
     rating: 5,
     text: "Atendimento de excelência. Custo e benefício extremamente satisfatório. Parabéns a Novamec, especialmente ao proprietário Vinícius.",
     service: "Mecânica Geral",
   },
   {
-    name: "Cliente Google",
+    name: "Gilbert Giba",
     rating: 5,
-    text: "Excelente oficina, profissionais bem qualificados, lugar agradável. Recomendo!",
+    text: "Excelente oficina, profissionais bem qualificados, lugar agradável. Recomendo a todos!",
+    service: "Mecânica Geral",
+  },
+  {
+    name: "Rafael Santos",
+    rating: 5,
+    text: "Fiz uma revisão geral no meu veículo na NOVAMEC e o serviço foi impecável! O atendimento foi excelente, o prazo foi cumprido à risca, e o carro ficou perfeito.",
+    service: "Revisão Completa",
+  },
+  {
+    name: "Flavio Souza",
+    rating: 5,
+    text: "Atendimento honesto, serviço confiável e bem executado!",
     service: "Mecânica Geral",
   },
 ] as const;
@@ -227,7 +233,7 @@ export const FAQ_ITEMS = [
 ] as const;
 
 export const NAV_LINKS = [
-  { href: "/", label: "Início" },
+  { href: "/#top", label: "Início" },
   { href: "/sobre", label: "Sobre Nós" },
   { href: "/#servicos", label: "Serviços" },
   { href: "/contato", label: "Contato" },

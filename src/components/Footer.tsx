@@ -130,7 +130,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} {BUSINESS.name}. Todos os direitos
             reservados.
           </p>
-          <p>CNPJ em registro</p>
+          <p>CNPJ: 23.619.120/0001-77</p>
         </div>
       </div>
     </footer>
