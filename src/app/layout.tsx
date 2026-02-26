@@ -68,10 +68,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  icons: {
-    icon: "/images/logo-novamec.png",
-    apple: "/images/logo-novamec.png",
-  },
   alternates: {
     canonical: BUSINESS.url,
   },
