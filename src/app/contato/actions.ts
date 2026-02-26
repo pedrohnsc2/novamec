@@ -23,6 +23,7 @@ export async function submitContactForm(
       success: false,
       message:
         "Muitas tentativas. Por favor, aguarde alguns minutos e tente novamente.",
+      values: Object.fromEntries(formData) as Record<string, string>,
     };
   }
 
@@ -59,6 +60,7 @@ export async function submitContactForm(
       success: false,
       message: "Por favor, corrija os erros no formulário.",
       errors: result.error.flatten().fieldErrors,
+      values: Object.fromEntries(formData) as Record<string, string>,
     };
   }
 

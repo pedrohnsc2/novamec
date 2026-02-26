@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${BUSINESS.url}/sobre`,
   },
+  openGraph: {
+    title: "Sobre a NOVAMEC | Oficina Mecânica em Contagem-MG",
+    description:
+      "Conheça a NOVAMEC: oficina mecânica em Contagem com transparência, preço justo e equipe liderada pelo Vinícius.",
+    url: `${BUSINESS.url}/sobre`,
+  },
 };
 
 const breadcrumbJsonLd = {
@@ -78,7 +84,8 @@ export default function SobrePage() {
             <span className="text-white">Sobre Nós</span>
           </nav>
           <h1 className="font-serif text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-            Conheça a <span className="text-secondary">Novamec</span>
+            Oficina Mecânica de{" "}
+            <span className="text-secondary">Confiança</span> em Contagem
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-gray-300">
             Uma oficina mecânica construída sobre confiança, transparência e

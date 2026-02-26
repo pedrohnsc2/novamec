@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin, Instagram, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Star } from "lucide-react";
 import { BUSINESS, SERVICES, NAV_LINKS } from "@/lib/constants";
 import Logo from "./Logo";
 
@@ -22,9 +22,18 @@ export default function Footer() {
                 aria-label="Instagram da Novamec"
                 className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-secondary"
               >
-                <Instagram className="h-4 w-4" />
+                <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
               </a>
             </div>
+            <a
+              href={BUSINESS.googleReviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-2 text-sm text-gray-300 transition-colors hover:bg-secondary hover:text-white"
+            >
+              <Star className="h-4 w-4 fill-secondary text-secondary" />
+              Avalie-nos no Google
+            </a>
           </div>
 
           {/* Services */}
@@ -36,7 +45,7 @@ export default function Footer() {
               {SERVICES.slice(0, 6).map((service) => (
                 <li key={service.id}>
                   <Link
-                    href="/#servicos"
+                    href="/servicos"
                     className="text-sm text-gray-400 transition-colors hover:text-secondary"
                   >
                     {service.title}

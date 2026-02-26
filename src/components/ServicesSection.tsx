@@ -1,101 +1,60 @@
-"use client";
-
 import Image from "next/image";
-import {
-  ClipboardCheck,
-  Wrench,
-  CircleDot,
-  Cpu,
-  Thermometer,
-  Droplets,
-  Cog,
-  Zap,
-  Target,
-  Circle,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import Link from "next/link";
 import { SERVICES } from "@/lib/constants";
 import AnimatedSection from "./AnimatedSection";
 
-const iconMap: Record<string, LucideIcon> = {
-  ClipboardCheck,
-  Wrench,
-  CircleDot,
-  Cpu,
-  Thermometer,
-  Droplets,
-  Cog,
-  Zap,
-  Target,
-  Circle,
-};
-
-const highlightedServices = ["revisao", "alinhamento", "balanceamento"];
+const featuredServices = SERVICES.filter(
+  (s) => "image" in s && s.image
+);
 
 export default function ServicesSection() {
   return (
-    <section id="servicos" className="bg-bg-white py-12 lg:py-20">
+    <section id="servicos" aria-labelledby="servicos-heading" className="bg-bg-white py-12 lg:py-20">
       <div className="mx-auto max-w-7xl px-6">
         <AnimatedSection className="mb-12 text-center">
-          <h2 className="font-serif text-3xl font-bold text-text sm:text-4xl">
-            Nossos <span className="text-secondary">Serviços</span>
+          <h2 id="servicos-heading" className="font-serif text-3xl font-bold text-text sm:text-4xl">
+            Serviços de <span className="text-secondary">Mecânica</span> em Contagem
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-text-light">
             Atendemos veículos nacionais e importados com diagnóstico preciso e
-            peças de qualidade. Confira nossos serviços.
+            peças de qualidade. Confira nossos serviços em destaque.
           </p>
         </AnimatedSection>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((service) => {
-            const Icon = iconMap[service.icon];
-            const isHighlighted = highlightedServices.includes(service.id);
+          {featuredServices.map((service) => (
+            <div
+              key={service.id}
+              className="group relative overflow-hidden rounded-xl border border-border-light bg-white p-6 transition-shadow duration-300 hover:shadow-lg"
+            >
+              {"image" in service && service.image && (
+                <div className="relative mb-4 aspect-video overflow-hidden rounded-lg">
+                  <Image
+                    src={service.image}
+                    alt={`Serviço de ${service.title} na oficina NOVAMEC em Contagem`}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  />
+                </div>
+              )}
+              <h3 className="font-serif text-lg font-bold text-text">
+                {service.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-text-light">
+                {service.description}
+              </p>
+            </div>
+          ))}
+        </div>
 
-            return (
-              <div
-                key={service.id}
-                className={`group relative overflow-hidden rounded-xl border p-6 transition-shadow duration-300 hover:shadow-lg ${
-                  isHighlighted
-                    ? "border-secondary/30 bg-gradient-to-br from-secondary/5 to-transparent"
-                    : "border-border-light bg-white"
-                }`}
-              >
-                {isHighlighted && (
-                  <span className="absolute right-3 top-3 rounded-full bg-secondary/10 px-2.5 py-0.5 text-xs font-semibold text-secondary">
-                    Destaque
-                  </span>
-                )}
-                {"image" in service && service.image && (
-                  <div className="relative mb-4 aspect-video overflow-hidden rounded-lg">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover"
-                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    />
-                  </div>
-                )}
-                {!("image" in service && service.image) && (
-                  <div
-                    className={`mb-4 flex h-12 w-12 items-center justify-center rounded-lg transition-colors ${
-                      isHighlighted
-                        ? "bg-secondary/10 text-secondary"
-                        : "bg-bg text-text-light group-hover:bg-secondary/10 group-hover:text-secondary"
-                    }`}
-                  >
-                    {Icon && <Icon className="h-6 w-6" />}
-                  </div>
-                )}
-                <h3 className="font-serif text-lg font-bold text-text">
-                  {service.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-light">
-                  {service.description}
-                </p>
-              </div>
-            );
-          })}
+        <div className="mt-10 text-center">
+          <Link
+            href="/servicos"
+            className="inline-flex items-center gap-2 font-semibold text-secondary transition-colors hover:text-secondary-dark"
+          >
+            Ver todos os serviços &rarr;
+          </Link>
         </div>
       </div>
     </section>

@@ -40,6 +40,7 @@ export const BUSINESS = {
     count: 65,
     source: "Google",
   },
+  googleReviewUrl: "https://search.google.com/local/writereview?placeid=PLACE_ID",
   owner: "Vinícius",
 } as const;
 
@@ -48,21 +49,21 @@ export const SERVICES = [
     id: "revisao",
     title: "Revisão Automotiva Completa",
     description:
-      "Checklist completo do seu veículo com inspeção de todos os sistemas, garantindo segurança e performance.",
+      "Dirija com tranquilidade sabendo que seu carro está 100%. Fazemos uma inspeção detalhada de todos os sistemas para prevenir problemas e garantir sua segurança.",
     icon: "ClipboardCheck",
   },
   {
     id: "mecanica-geral",
     title: "Mecânica Geral",
     description:
-      "Motor, câmbio, embreagem e componentes mecânicos. Diagnóstico preciso e reparo com peças de qualidade.",
+      "Seu carro volta a rodar como novo. Cuidamos de motor, câmbio, embreagem e demais componentes com diagnóstico preciso e peças de qualidade.",
     icon: "Wrench",
   },
   {
     id: "suspensao-freios",
     title: "Suspensão e Freios",
     description:
-      "Amortecedores, molas, pastilhas, discos e todo o sistema de frenagem e suspensão do seu veículo.",
+      "Mais estabilidade nas curvas e frenagem segura para você e sua família. Reparamos amortecedores, molas, pastilhas, discos e todo o sistema.",
     icon: "CircleDot",
     image: "/images/freio-disco.png",
   },
@@ -70,7 +71,7 @@ export const SERVICES = [
     id: "injecao-eletronica",
     title: "Injeção Eletrônica",
     description:
-      "Diagnóstico computadorizado e manutenção do sistema de injeção eletrônica para todas as marcas.",
+      "Economia de combustível e motor funcionando redondo. Fazemos diagnóstico computadorizado e manutenção do sistema de injeção para todas as marcas.",
     icon: "Cpu",
     image: "/images/diagnostico.png",
   },
@@ -78,21 +79,21 @@ export const SERVICES = [
     id: "arrefecimento",
     title: "Sistema de Arrefecimento",
     description:
-      "Radiador, bomba d'água, válvula termostática e mangueiras. Evite superaquecimento do motor.",
+      "Evite surpresas com o motor superaquecendo. Cuidamos do radiador, bomba d'água, válvula termostática e mangueiras do seu veículo.",
     icon: "Thermometer",
   },
   {
     id: "troca-oleo",
     title: "Troca de Óleo e Filtros",
     description:
-      "Troca de óleo do motor e filtros (óleo, ar, combustível, cabine) com produtos de qualidade.",
+      "Prolongue a vida útil do seu motor com troca de óleo e filtros no prazo certo, usando produtos de qualidade comprovada.",
     icon: "Droplets",
   },
   {
     id: "correia-dentada",
     title: "Correia Dentada",
     description:
-      "Troca preventiva da correia dentada e componentes do kit, evitando danos graves ao motor.",
+      "Proteja seu motor contra danos graves. A troca preventiva da correia dentada e do kit evita reparos caros no futuro.",
     icon: "Cog",
     image: "/images/correia-dentada.png",
   },
@@ -100,21 +101,21 @@ export const SERVICES = [
     id: "eletrica",
     title: "Elétrica Automotiva",
     description:
-      "Alternador, motor de partida, bateria, faróis e todo o sistema elétrico do seu veículo.",
+      "Sem problemas de partida ou falhas elétricas. Resolvemos questões de alternador, motor de partida, bateria, faróis e todo o sistema elétrico.",
     icon: "Zap",
   },
-{
+  {
     id: "alinhamento",
     title: "Alinhamento",
     description:
-      "Alinhamento de direção computadorizado para todas as marcas, garantindo estabilidade e segurança na condução.",
+      "Seu carro anda reto e os pneus duram mais. Fazemos alinhamento computadorizado para todas as marcas, garantindo estabilidade e segurança.",
     icon: "Target",
   },
   {
     id: "balanceamento",
     title: "Balanceamento",
     description:
-      "Balanceamento de rodas para eliminar vibrações, reduzir desgaste irregular dos pneus e garantir conforto ao dirigir.",
+      "Viaje com mais conforto, sem vibrações no volante. O balanceamento correto também reduz o desgaste irregular dos seus pneus.",
     icon: "Circle",
   },
 ] as const;
@@ -235,6 +236,6 @@ export const FAQ_ITEMS = [
 export const NAV_LINKS = [
   { href: "/#top", label: "Início" },
   { href: "/sobre", label: "Sobre Nós" },
-  { href: "/#servicos", label: "Serviços" },
+  { href: "/servicos", label: "Serviços" },
   { href: "/contato", label: "Contato" },
 ] as const;

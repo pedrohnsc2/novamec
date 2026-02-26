@@ -1,10 +1,12 @@
+import dynamic from "next/dynamic";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
-import DifferentialsSection from "@/components/DifferentialsSection";
-import ConvenienceSection from "@/components/ConvenienceSection";
-import CTASection from "@/components/CTASection";
-import FAQSection from "@/components/FAQSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
+
+const DifferentialsSection = dynamic(() => import("@/components/DifferentialsSection"));
+const TestimonialsSection = dynamic(() => import("@/components/TestimonialsSection"));
+const FAQSection = dynamic(() => import("@/components/FAQSection"));
+const CTASection = dynamic(() => import("@/components/CTASection"));
+const ConvenienceSection = dynamic(() => import("@/components/ConvenienceSection"));
 
 export default function HomePage() {
   return (
@@ -12,10 +14,10 @@ export default function HomePage() {
       <HeroSection />
       <ServicesSection />
       <DifferentialsSection />
-      <ConvenienceSection />
-      <CTASection />
-      <FAQSection />
       <TestimonialsSection />
+      <FAQSection />
+      <CTASection />
+      <ConvenienceSection />
     </>
   );
 }

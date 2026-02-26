@@ -1,9 +1,10 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { Send, CheckCircle, MessageCircle } from "lucide-react";
 import { submitContactForm } from "@/app/contato/actions";
 import { SERVICES } from "@/lib/constants";
+import { trackFormSubmit, trackWhatsAppClick } from "@/lib/gtag";
 import type { ContactFormState } from "@/lib/schemas";
 
 const initialState: ContactFormState = {
@@ -17,27 +18,37 @@ export default function ContactForm() {
     initialState
   );
 
+  useEffect(() => {
+    if (state.success) {
+      trackFormSubmit();
+    }
+  }, [state.success]);
+
   if (state.success && state.whatsappUrl) {
     return (
       <div className="rounded-2xl border border-border-light bg-white p-8 text-center shadow-sm">
-        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-          <CheckCircle className="h-8 w-8 text-green-600" />
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-secondary/10">
+          <CheckCircle className="h-8 w-8 text-secondary" />
         </div>
         <h3 className="font-serif text-2xl font-bold text-text">
-          Mensagem Enviada!
+          Quase lá!
         </h3>
-        <p className="mt-2 text-text-light">{state.message}</p>
+        <p className="mt-2 text-text-light">
+          Seus dados foram preparados. Clique no botão abaixo para enviar a
+          mensagem diretamente pelo WhatsApp.
+        </p>
         <a
           href={state.whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackWhatsAppClick("contact_form_success")}
           className="mt-6 inline-flex items-center gap-2 rounded-lg bg-whatsapp px-8 py-3 font-semibold text-white transition-colors hover:bg-green-600"
         >
           <MessageCircle className="h-5 w-5" />
-          Abrir conversa no WhatsApp
+          Enviar pelo WhatsApp
         </a>
         <p className="mt-3 text-xs text-text-lighter">
-          Clique no botão acima para enviar a mensagem pelo WhatsApp.
+          A mensagem só será enviada após você confirmar no WhatsApp.
         </p>
       </div>
     );
@@ -72,6 +83,8 @@ export default function ContactForm() {
             id="name"
             name="name"
             required
+            autoComplete="name"
+            defaultValue={state.values?.name ?? ""}
             className="w-full rounded-lg border border-border px-4 py-3 text-text transition-colors focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
             placeholder="Seu nome"
           />
@@ -93,6 +106,8 @@ export default function ContactForm() {
             id="phone"
             name="phone"
             required
+            autoComplete="tel"
+            defaultValue={state.values?.phone ?? ""}
             className="w-full rounded-lg border border-border px-4 py-3 text-text transition-colors focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
             placeholder="(31) 99999-9999"
           />
@@ -116,6 +131,8 @@ export default function ContactForm() {
             type="email"
             id="email"
             name="email"
+            autoComplete="email"
+            defaultValue={state.values?.email ?? ""}
             className="w-full rounded-lg border border-border px-4 py-3 text-text transition-colors focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
             placeholder="seu@email.com"
           />
@@ -139,6 +156,7 @@ export default function ContactForm() {
             id="vehicle"
             name="vehicle"
             required
+            defaultValue={state.values?.vehicle ?? ""}
             className="w-full rounded-lg border border-border px-4 py-3 text-text transition-colors focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
             placeholder="Ex: Honda Civic 2020"
           />
@@ -162,7 +180,7 @@ export default function ContactForm() {
             name="service"
             required
             className="w-full rounded-lg border border-border bg-white px-4 py-3 text-text transition-colors focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
-            defaultValue=""
+            defaultValue={state.values?.service ?? ""}
           >
             <option value="" disabled>
               Selecione o serviço
@@ -194,6 +212,7 @@ export default function ContactForm() {
             id="message"
             name="message"
             rows={4}
+            defaultValue={state.values?.message ?? ""}
             className="w-full resize-none rounded-lg border border-border px-4 py-3 text-text transition-colors focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
             placeholder="Descreva o problema ou o serviço que precisa..."
           />

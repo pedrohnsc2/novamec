@@ -6,11 +6,11 @@ import AnimatedSection from "./AnimatedSection";
 
 export default function ConvenienceSection() {
   return (
-    <section className="bg-bg-white py-12 lg:py-20">
+    <section aria-labelledby="localizacao-heading" className="bg-bg-white py-12 lg:py-20">
       <div className="mx-auto max-w-7xl px-6">
         <AnimatedSection className="mb-12 text-center">
-          <h2 className="font-serif text-3xl font-bold text-text sm:text-4xl">
-            Como <span className="text-secondary">Chegar</span>
+          <h2 id="localizacao-heading" className="font-serif text-3xl font-bold text-text sm:text-4xl">
+            Localização da <span className="text-secondary">NOVAMEC</span> em Contagem
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-text-light">
             Estamos no bairro Três Barras, em Contagem-MG. Fácil acesso pela

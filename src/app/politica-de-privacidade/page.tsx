@@ -13,8 +13,32 @@ export const metadata: Metadata = {
 };
 
 export default function PoliticaDePrivacidadePage() {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Início",
+        item: BUSINESS.url,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Política de Privacidade",
+        item: `${BUSINESS.url}/politica-de-privacidade`,
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+
       {/* Hero */}
       <section className="bg-gradient-to-br from-primary-dark to-accent py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6">

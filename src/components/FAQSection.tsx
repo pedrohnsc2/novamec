@@ -27,7 +27,7 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="bg-bg py-12 lg:py-20">
+    <section aria-labelledby="faq-heading" className="bg-bg py-12 lg:py-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -35,8 +35,8 @@ export default function FAQSection() {
 
       <div className="mx-auto max-w-3xl px-6">
         <AnimatedSection className="mb-12 text-center">
-          <h2 className="font-serif text-3xl font-bold text-text sm:text-4xl">
-            Perguntas <span className="text-secondary">Frequentes</span>
+          <h2 id="faq-heading" className="font-serif text-3xl font-bold text-text sm:text-4xl">
+            Dúvidas sobre <span className="text-secondary">Mecânica</span> em Contagem
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-text-light">
             Tire suas dúvidas sobre nossos serviços, horários e formas de

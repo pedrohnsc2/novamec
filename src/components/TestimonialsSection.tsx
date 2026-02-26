@@ -14,12 +14,42 @@ export default function TestimonialsSection() {
   const next = () =>
     setCurrent((c) => (c === TESTIMONIALS.length - 1 ? 0 : c + 1));
 
+  const reviewsJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": TESTIMONIALS.map((t) => ({
+      "@type": "Review",
+      author: { "@type": "Person", name: t.name },
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: t.rating,
+        bestRating: 5,
+      },
+      reviewBody: t.text,
+      itemReviewed: {
+        "@type": "AutoRepair",
+        name: BUSINESS.name,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: BUSINESS.address.street,
+          addressLocality: BUSINESS.address.city,
+          addressRegion: BUSINESS.address.state,
+          postalCode: BUSINESS.address.zip,
+          addressCountry: "BR",
+        },
+      },
+    })),
+  };
+
   return (
-    <section className="bg-bg-white py-12 lg:py-20">
+    <section aria-labelledby="depoimentos-heading" className="bg-bg-white py-12 lg:py-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsJsonLd) }}
+      />
       <div className="mx-auto max-w-4xl px-6">
         <AnimatedSection className="mb-12 text-center">
-          <h2 className="font-serif text-3xl font-bold text-text sm:text-4xl">
-            O que nossos <span className="text-secondary">clientes</span> dizem
+          <h2 id="depoimentos-heading" className="font-serif text-3xl font-bold text-text sm:text-4xl">
+            Avaliações de <span className="text-secondary">Clientes</span> da NOVAMEC em Contagem
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-text-light">
             {BUSINESS.rating.value} estrelas no Google com{" "}

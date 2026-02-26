@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { DM_Sans, Montserrat } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { BUSINESS } from "@/lib/constants";
@@ -19,24 +20,17 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
 export const metadata: Metadata = {
   metadataBase: new URL(BUSINESS.url),
   title: {
     default:
-      "NOVAMEC Oficina Mecânica em Contagem | Revisão e Mecânica de Confiança",
+      "NOVAMEC | Oficina Mecânica de Confiança em Contagem-MG",
     template: "%s | NOVAMEC Oficina Mecânica",
   },
   description:
     "Oficina mecânica em Contagem-MG. Revisão completa, mecânica geral para carros nacionais e importados. ⭐ 4.9 no Google. Agende pelo WhatsApp!",
-  keywords: [
-    "oficina mecânica Contagem",
-    "mecânico Contagem MG",
-    "revisão automotiva Contagem",
-    "oficina mecânica Três Barras Contagem",
-    "mecânica de confiança Contagem",
-    "mecânico carros importados Contagem",
-    "melhor oficina mecânica Contagem",
-  ],
   authors: [{ name: BUSINESS.name }],
   creator: BUSINESS.name,
   openGraph: {
@@ -45,9 +39,9 @@ export const metadata: Metadata = {
     url: BUSINESS.url,
     siteName: BUSINESS.name,
     title:
-      "NOVAMEC Oficina Mecânica em Contagem | Revisão e Mecânica de Confiança",
+      "NOVAMEC | Oficina Mecânica de Confiança em Contagem-MG",
     description:
-      "Oficina mecânica em Contagem-MG. Revisão completa, mecânica geral para carros nacionais e importados. ⭐ 4.9 no Google.",
+      "Oficina mecânica em Contagem-MG. Revisão completa, mecânica geral para carros nacionais e importados. 4.9 no Google.",
     images: [
       {
         url: "/images/fachada-porsche.png",
@@ -56,6 +50,12 @@ export const metadata: Metadata = {
         alt: "NOVAMEC Oficina Mecânica - Fachada",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NOVAMEC | Oficina Mecânica de Confiança em Contagem-MG",
+    description: "Oficina mecânica em Contagem-MG. Revisão completa, mecânica geral para carros nacionais e importados. 4.9 no Google.",
+    images: ["/images/fachada-porsche.png"],
   },
   robots: {
     index: true,
@@ -107,7 +107,7 @@ const jsonLd = {
     ratingValue: String(BUSINESS.rating.value),
     reviewCount: String(BUSINESS.rating.count),
   },
-  priceRange: "$",
+  priceRange: "$$",
   areaServed: [
     "Contagem",
     "Belo Horizonte",
@@ -129,12 +129,34 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {GA_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="gtag-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_MEASUREMENT_ID}');
+              `}
+            </Script>
+          </>
+        )}
       </head>
       <body
         className={`${dmSans.variable} ${montserrat.variable} font-sans antialiased`}
       >
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-secondary focus:px-6 focus:py-3 focus:font-semibold focus:text-white focus:shadow-lg"
+        >
+          Pular para o conteúdo
+        </a>
         <Header />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <Footer />
         <WhatsAppButton />
         <Analytics />

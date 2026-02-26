@@ -56,3 +56,15 @@ h6 {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-text-light);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

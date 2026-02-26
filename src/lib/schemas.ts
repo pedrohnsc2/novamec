@@ -34,4 +34,5 @@ export type ContactFormState = {
   message: string;
   errors?: Partial<Record<keyof ContactFormData, string[]>>;
   whatsappUrl?: string;
+  values?: Partial<Record<string, string>>;
 };

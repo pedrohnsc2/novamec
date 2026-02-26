@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Clock } from "lucide-react";
 import { BUSINESS, NAV_LINKS } from "@/lib/constants";
+import { trackWhatsAppClick, trackPhoneClick } from "@/lib/gtag";
 import Logo from "./Logo";
 
 export default function Header() {
@@ -36,6 +37,7 @@ export default function Header() {
           <div className="flex items-center gap-6">
             <a
               href={`tel:${BUSINESS.phone}`}
+              onClick={() => trackPhoneClick("header_topbar")}
               className="flex items-center gap-2 transition-colors hover:text-secondary"
             >
               <Phone className="h-3.5 w-3.5" />
@@ -50,6 +52,7 @@ export default function Header() {
             href={`https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(BUSINESS.whatsappMessage)}`}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsAppClick("header_topbar")}
             className="rounded bg-secondary px-4 py-1 text-xs font-semibold text-white transition-colors hover:bg-secondary-dark"
           >
             Agende pelo WhatsApp
@@ -85,6 +88,7 @@ export default function Header() {
               href={`https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(BUSINESS.whatsappMessage)}`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick("header_nav")}
               className="rounded-lg bg-secondary px-6 py-2.5 font-semibold text-white transition-colors hover:bg-secondary-dark"
             >
               Agendar Serviço
@@ -151,12 +155,14 @@ export default function Header() {
                   href={`https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(BUSINESS.whatsappMessage)}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackWhatsAppClick("header_mobile")}
                   className="block rounded-lg bg-secondary py-3 text-center font-semibold text-white transition-colors hover:bg-secondary-dark"
                 >
                   Agendar pelo WhatsApp
                 </a>
                 <a
                   href={`tel:${BUSINESS.phone}`}
+                  onClick={() => trackPhoneClick("header_mobile")}
                   className="block rounded-lg border-2 border-primary py-3 text-center font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
                 >
                   Ligar: {BUSINESS.phoneDisplay}

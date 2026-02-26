@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ChevronRight, Phone, Mail, MapPin, Clock, Instagram } from "lucide-react";
+import { ChevronRight, Phone, Mail, MapPin, Clock } from "lucide-react";
 import { BUSINESS } from "@/lib/constants";
 import ContactForm from "@/components/ContactForm";
 
@@ -10,6 +10,12 @@ export const metadata: Metadata = {
     "Agende sua revisão ou mecânica na NOVAMEC em Contagem-MG. WhatsApp, telefone e formulário online. Seg-Sex 08h–18h. Três Barras.",
   alternates: {
     canonical: `${BUSINESS.url}/contato`,
+  },
+  openGraph: {
+    title: "Contato e Agendamento | NOVAMEC Oficina Mecânica Contagem",
+    description:
+      "Agende sua revisão ou mecânica na NOVAMEC em Contagem-MG. WhatsApp, telefone e formulário online.",
+    url: `${BUSINESS.url}/contato`,
   },
 };
 
@@ -51,7 +57,8 @@ export default function ContatoPage() {
             <span className="text-white">Contato</span>
           </nav>
           <h1 className="font-serif text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-            Fale <span className="text-secondary">Conosco</span>
+            Contato e Agendamento —{" "}
+            <span className="text-secondary">Oficina Mecânica</span> em Contagem
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-gray-300">
             Agende um serviço, tire dúvidas ou solicite um orçamento. Estamos
@@ -148,7 +155,7 @@ export default function ContatoPage() {
                       rel="noopener noreferrer"
                       className="flex items-start gap-3 text-text-light transition-colors hover:text-secondary"
                     >
-                      <Instagram className="mt-0.5 h-5 w-5 shrink-0 text-secondary" />
+                      <svg className="mt-0.5 h-5 w-5 shrink-0 text-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                       <div>
                         <p className="font-medium text-text">Instagram</p>
                         <p>@oficinanovamec</p>
