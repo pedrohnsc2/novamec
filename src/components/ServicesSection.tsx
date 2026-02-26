@@ -14,7 +14,6 @@ import {
   Circle,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { motion } from "framer-motion";
 import { SERVICES } from "@/lib/constants";
 import AnimatedSection from "./AnimatedSection";
 
@@ -48,18 +47,14 @@ export default function ServicesSection() {
         </AnimatedSection>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((service, index) => {
+          {SERVICES.map((service) => {
             const Icon = iconMap[service.icon];
             const isHighlighted = highlightedServices.includes(service.id);
 
             return (
-              <motion.div
+              <div
                 key={service.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5 }}
-                className={`group relative overflow-hidden rounded-xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
+                className={`group relative overflow-hidden rounded-xl border p-6 transition-shadow duration-300 hover:shadow-lg ${
                   isHighlighted
                     ? "border-secondary/30 bg-gradient-to-br from-secondary/5 to-transparent"
                     : "border-border-light bg-white"
@@ -98,7 +93,7 @@ export default function ServicesSection() {
                 <p className="mt-2 text-sm leading-relaxed text-text-light">
                   {service.description}
                 </p>
-              </motion.div>
+              </div>
             );
           })}
         </div>
