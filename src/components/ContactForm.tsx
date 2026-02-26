@@ -42,7 +42,7 @@ export default function ContactForm() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => trackWhatsAppClick("contact_form_success")}
-          className="mt-6 inline-flex items-center gap-2 rounded-lg bg-whatsapp px-8 py-3 font-semibold text-white transition-colors hover:bg-green-600"
+          className="mt-6 inline-flex items-center gap-2 rounded-lg bg-whatsapp px-8 py-3 font-semibold text-white transition-colors hover:bg-green-800"
         >
           <MessageCircle className="h-5 w-5" />
           Enviar pelo WhatsApp

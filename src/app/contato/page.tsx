@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     canonical: `${BUSINESS.url}/contato`,
   },
   openGraph: {
+    type: "website",
     title: "Contato e Agendamento | NOVAMEC Oficina Mecânica Contagem",
     description:
       "Agende sua revisão ou mecânica na NOVAMEC em Contagem-MG. WhatsApp, telefone e formulário online.",
@@ -87,7 +88,7 @@ export default function ContatoPage() {
                   href={`https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(BUSINESS.whatsappMessage)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-whatsapp px-6 py-3 font-semibold text-white transition-colors hover:bg-green-600"
+                  className="flex w-full items-center justify-center gap-2 rounded-lg bg-whatsapp px-6 py-3 font-semibold text-white transition-colors hover:bg-green-800"
                 >
                   WhatsApp: {BUSINESS.whatsappDisplay}
                 </a>

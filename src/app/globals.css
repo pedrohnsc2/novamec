@@ -7,16 +7,16 @@
   --color-primary: #3C3C3B;
   --color-primary-dark: #2A2A29;
   --color-accent: #1E1E1E;
-  --color-secondary: #F58220;
-  --color-secondary-dark: #D96D0E;
+  --color-secondary: #AE5B0D;
+  --color-secondary-dark: #944C09;
   --color-bg: #F7F7F7;
   --color-bg-white: #FFFFFF;
   --color-text: #2D2D2D;
   --color-text-light: #5A5A5A;
-  --color-text-lighter: #8A8A8A;
+  --color-text-lighter: #737373;
   --color-border: #D1D5DB;
   --color-border-light: #E5E7EB;
-  --color-whatsapp: #25D366;
+  --color-whatsapp: #15803d;
 }
 
 html {
@@ -27,6 +27,7 @@ body {
   font-family: var(--font-sans);
   color: var(--color-text);
   background-color: var(--color-bg);
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

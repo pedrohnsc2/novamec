@@ -8,7 +8,7 @@ export class SobrePage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.heading = page.getByRole("heading", { name: /conheça a novamec/i });
+    this.heading = page.getByRole("heading", { name: /oficina mecânica de/i });
     this.historySection = page.getByRole("heading", {
       name: /nossa história/i,
     });

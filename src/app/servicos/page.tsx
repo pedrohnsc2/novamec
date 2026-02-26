@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     canonical: `${BUSINESS.url}/servicos`,
   },
   openGraph: {
+    type: "website",
     title: "Serviços de Mecânica Automotiva em Contagem | NOVAMEC",
     description:
       "Revisão automotiva, mecânica geral, suspensão, freios, injeção eletrônica e mais na NOVAMEC em Contagem-MG.",
@@ -150,7 +151,7 @@ export default function ServicosPage() {
               href={`https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(BUSINESS.whatsappMessage)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-whatsapp px-6 py-3 font-semibold text-white transition-colors hover:bg-green-600"
+              className="inline-flex items-center gap-2 rounded-lg bg-whatsapp px-6 py-3 font-semibold text-white transition-colors hover:bg-green-800"
             >
               Agendar pelo WhatsApp
             </a>

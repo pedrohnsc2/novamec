@@ -6,7 +6,7 @@ test.describe("Navigation", () => {
     await page.getByRole("link", { name: "Sobre Nós" }).first().click();
     await expect(page).toHaveURL(/\/sobre/);
     await expect(
-      page.getByRole("heading", { name: /conheça a novamec/i })
+      page.getByRole("heading", { name: /oficina mecânica de/i })
     ).toBeVisible();
   });
 

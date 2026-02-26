@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     canonical: `${BUSINESS.url}/sobre`,
   },
   openGraph: {
+    type: "website",
     title: "Sobre a NOVAMEC | Oficina Mecânica em Contagem-MG",
     description:
       "Conheça a NOVAMEC: oficina mecânica em Contagem com transparência, preço justo e equipe liderada pelo Vinícius.",
