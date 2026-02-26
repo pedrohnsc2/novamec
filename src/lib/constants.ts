@@ -40,7 +40,7 @@ export const BUSINESS = {
     count: 65,
     source: "Google",
   },
-  googleReviewUrl: "https://search.google.com/local/writereview?placeid=PLACE_ID",
+  googleReviewUrl: "https://search.google.com/local/writereview?placeid=ChIJAZqMJcaVpgAR-brWzNS19HQ",
   owner: "Vinícius",
 } as const;
 
